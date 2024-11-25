@@ -5,8 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class ContactFormMail extends Mailable
@@ -15,16 +13,25 @@ class ContactFormMail extends Mailable
 
     public $contact;
 
+    /**
+     * Create a new message instance.
+     */
     public function __construct($contact)
     {
-        $this->contact = $contact;
+        $this->contact = $contact; // Сохраняем данные контакта
     }
 
+    /**
+     * Get the message envelope.
+     */
     public function build()
     {
-        return $this
-            ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
-            ->subject('Новое сообщение с контактной формы')
-            ->view('emails.contact_form');
+        return $this->from(env('MAIL_FROM_ADDRESS', 'test@example.com'), env('MAIL_FROM_NAME','testname'))
+                    ->subject('Новое сообщение с контактной формы')
+                    ->view('emails.contact_form')
+                    ->with([
+                        'contact' => $this->contact, // Данные для представления
+                    ]);
     }
 }
+
