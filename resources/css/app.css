@@ -17,10 +17,6 @@ form {
     width: 300px;
 }
 
-/* form:hover {
-    transform: scale(1.02);
-} */
-
 label {
     display: block;
     margin-bottom: 8px;
@@ -33,13 +29,13 @@ input {
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box; /* Добавляем для того, чтобы padding не добавлялся к ширине */
+    box-sizing: border-box;
     transition: border-color 0.2s;
 }
 
 input:focus {
     border-color: #5D9CEC;
-    outline: none; /* Убираем обводку по умолчанию */
+    outline: none;
 }
 
 button {
@@ -55,10 +51,10 @@ button {
 }
 
 button:hover {
-    background-color: #4a8ac5; /* Темнее при наведении */
+    background-color: #4a8ac5;
     transform: translateY(-2px);
 }
 
 button:focus {
-    outline: none; /* Убираем обводку по умолчанию */
+    outline: none;
 }
